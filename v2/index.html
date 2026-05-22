@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>增值税专用发票培训 · 在线测试</title>
+<style>
+  /* ===== 配置变量 ===== */
+  :root {
+    --navy: #0F2E5C;
+    --navy-dark: #081E40;
+    --blue: #1F5AA8;
+    --blue-mid: #3D7BD9;
+    --blue-lite: #DCE7F7;
+    --gold: #C9A227;
+    --gold-lite: #F5E9C4;
+    --red: #C03A2B;
+    --red-lite: #FBE6E3;
+    --green: #1E8E5A;
+    --green-lite: #D5EFE2;
+    --bg: #F4F6FA;
+    --white: #FFFFFF;
+    --ink: #1A2332;
+    --text: #324155;
+    --mute: #64748B;
+    --line: #D6DCE5;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Microsoft YaHei", "微软雅黑", -apple-system, BlinkMacSystemFont, "PingFang SC", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    padding: 20px;
+  }
+  .container { max-width: 880px; margin: 0 auto; }
+
+  /* ===== 标题区 ===== */
+  .header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+    color: white;
+    padding: 36px 32px;
+    border-radius: 12px 12px 0 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: "";
+    position: absolute;
+    right: -50px;
+    top: -50px;
+    width: 200px;
+    height: 200px;
+    background: var(--gold);
+    opacity: 0.15;
+    border-radius: 50%;
+  }
+  .header::after {
+    content: "";
+    position: absolute;
+    left: 0; top: 0;
+    width: 6px; height: 100%;
+    background: var(--gold);
+  }
+  .header h1 {
+    font-size: 26px;
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+    position: relative;
+  }
+  .header .subtitle {
+    font-size: 14px;
+    color: var(--gold-lite);
+    position: relative;
+  }
+  .header .badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--navy);
+    padding: 4px 14px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 4px;
+    margin-bottom: 12px;
+  }
+
+  /* ===== 信息表单区 ===== */
+  .card {
+    background: var(--white);
+    padding: 28px 32px;
+    border-radius: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .card.first { border-radius: 0; }
+  .card.last { border-radius: 0 0 12px 12px; border-bottom: none; }
+
+  .section-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--navy);
+    margin-bottom: 16px;
+    padding-left: 12px;
+    border-left: 4px solid var(--gold);
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 600px) {
+    .info-grid { grid-template-columns: 1fr; }
+  }
+  .field label {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .field input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1.5px solid var(--line);
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--ink);
+    transition: border 0.15s;
+  }
+  .field input:focus {
+    outline: none;
+    border-color: var(--blue);
+  }
+  .field .required {
+    color: var(--red);
+    margin-left: 2px;
+  }
+  .field input.error {
+    border-color: var(--red);
+    background: var(--red-lite);
+  }
+
+  /* ===== 题目 ===== */
+  .question {
+    margin-bottom: 28px;
+    padding-bottom: 22px;
+    border-bottom: 1px dashed var(--line);
+  }
+  .question:last-child { border-bottom: none; }
+  .q-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .q-num {
+    background: var(--navy);
+    color: var(--gold);
+    font-weight: bold;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 14px;
+  }
+  .q-text {
+    flex: 1;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    padding-top: 4px;
+  }
+  .q-type {
+    display: inline-block;
+    font-size: 11px;
+    color: var(--blue);
+    background: var(--blue-lite);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: normal;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+  .options {
+    margin-left: 42px;
+  }
+  .option {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 12px;
+    margin: 6px 0;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.12s;
+    background: var(--white);
+  }
+  .option:hover {
+    border-color: var(--blue);
+    background: var(--blue-lite);
+  }
+  .option input {
+    margin-top: 4px;
+    cursor: pointer;
+    accent-color: var(--blue);
+  }
+  .option-letter {
+    font-weight: bold;
+    color: var(--blue);
+    min-width: 20px;
+  }
+  .option-text {
+    flex: 1;
+    font-size: 14px;
+    color: var(--text);
+  }
+  .option.selected {
+    border-color: var(--blue);
+    background: var(--blue-lite);
+  }
+
+  /* ===== 提交按钮 ===== */
+  .submit-area {
+    display: flex;
+    justify-content: center;
+    margin: 24px 0;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 36px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.15s;
+    letter-spacing: 1px;
+  }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    box-shadow: 0 3px 8px rgba(201, 162, 39, 0.3);
+  }
+  .btn-primary:hover {
+    background: #B58E1F;
+    transform: translateY(-1px);
+    box-shadow: 0 5px 12px rgba(201, 162, 39, 0.4);
+  }
+  .btn-secondary {
+    background: var(--white);
+    color: var(--navy);
+    border: 1.5px solid var(--navy);
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+  .btn-secondary:hover { background: var(--blue-lite); }
+
+  /* ===== 结果区 ===== */
+  .result {
+    display: none;
+    background: var(--white);
+    padding: 32px;
+    border-radius: 12px;
+    margin-top: 20px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  }
+  .result.show { display: block; }
+  .result-score {
+    text-align: center;
+    padding: 24px 0;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    color: white;
+    position: relative;
+  }
+  .result-score.pass { background: linear-gradient(135deg, var(--green) 0%, #2DA871 100%); }
+  .result-score.fail { background: linear-gradient(135deg, var(--red) 0%, #D4554A 100%); }
+  .result-score .verdict {
+    font-size: 13px;
+    letter-spacing: 4px;
+    opacity: 0.9;
+    margin-bottom: 4px;
+  }
+  .result-score .score-num {
+    font-size: 64px;
+    font-weight: bold;
+    line-height: 1;
+    margin: 8px 0;
+  }
+  .result-score .score-unit { font-size: 22px; opacity: 0.85; }
+  .result-score .desc {
+    font-size: 14px;
+    opacity: 0.95;
+    margin-top: 6px;
+  }
+  .stat-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .stat {
+    flex: 1;
+    background: var(--bg);
+    padding: 16px;
+    border-radius: 8px;
+    text-align: center;
+    border-left: 3px solid var(--blue);
+  }
+  .stat .label {
+    font-size: 12px;
+    color: var(--mute);
+    margin-bottom: 4px;
+  }
+  .stat .val {
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--navy);
+  }
+
+  /* 答题详情 */
+  .detail-list {
+    border-top: 1px solid var(--line);
+    padding-top: 18px;
+    margin-top: 18px;
+  }
+  .detail-wrap {
+    margin-bottom: 10px;
+  }
+  .detail-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  .detail-item.correct { background: var(--green-lite); color: var(--green); }
+  .detail-item.wrong { background: var(--red-lite); color: var(--red); }
+  .detail-item .ico {
+    margin-right: 10px;
+    font-weight: bold;
+    width: 24px;
+    text-align: center;
+  }
+  .detail-item .qno { font-weight: bold; margin-right: 12px; }
+  .detail-item .ans { margin-left: auto; font-size: 12px; }
+  @media (max-width: 600px) {
+    .detail-item { flex-wrap: wrap; }
+    .detail-item .ans { margin-left: 34px; margin-top: 4px; flex-basis: 100%; }
+  }
+
+  /* 错题解析框 */
+  .expl-box {
+    background: linear-gradient(180deg, #FFFBF0 0%, #FFFFFF 100%);
+    border: 1.5px solid var(--gold);
+    border-left: 5px solid var(--gold);
+    border-radius: 0 8px 8px 8px;
+    padding: 14px 18px;
+    margin: 4px 0 14px 18px;
+    font-size: 13.5px;
+    color: var(--text);
+    line-height: 1.7;
+    position: relative;
+  }
+  .expl-box::before {
+    content: "";
+    position: absolute;
+    left: -7px; top: -1px;
+    width: 14px; height: 14px;
+    border-left: 1.5px solid var(--gold);
+    border-top: 1.5px solid var(--gold);
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold) 50%, transparent 50%);
+    border-radius: 0;
+  }
+  .expl-title {
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .expl-q {
+    font-size: 13px;
+    color: var(--ink);
+    font-weight: 600;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed var(--gold-lite);
+  }
+  .expl-body { color: var(--text); }
+  .expl-foot {
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px dashed var(--gold-lite);
+    font-size: 12.5px;
+    color: var(--mute);
+  }
+  .expl-foot strong { color: var(--green); }
+
+  /* 重新答题按钮 */
+  .retake-area {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 24px 0 0 0;
+    padding: 16px 18px;
+    background: var(--blue-lite);
+    border-radius: 8px;
+    border-left: 4px solid var(--blue);
+  }
+  @media (max-width: 600px) {
+    .retake-area { flex-direction: column; align-items: flex-start; }
+  }
+  .btn-retake {
+    background: var(--blue);
+    color: white;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: inherit;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+    transition: all 0.15s;
+  }
+  .btn-retake:hover {
+    background: var(--navy);
+    transform: translateY(-1px);
+  }
+  .retake-hint {
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  /* 尝试次数徽章 */
+  .attempt-info {
+    position: absolute;
+    top: 14px; right: 14px;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    display: none;
+  }
+
+  /* 发送区 */
+  .send-area {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 2px solid var(--gold);
+  }
+  .send-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 14px;
+  }
+  @media (max-width: 600px) {
+    .send-grid { grid-template-columns: 1fr; }
+  }
+  .send-btn {
+    background: var(--white);
+    border: 1.5px solid var(--navy);
+    color: var(--navy);
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    font-family: inherit;
+  }
+  .send-btn:hover {
+    background: var(--navy);
+    color: var(--gold);
+  }
+  .send-btn .ico {
+    font-size: 24px;
+  }
+  .send-btn .label { font-size: 13px; }
+  .send-btn .hint { font-size: 11px; color: var(--mute); font-weight: normal; }
+  .send-btn:hover .hint { color: var(--gold-lite); }
+
+  .toast {
+    position: fixed;
+    bottom: 24px; left: 50%;
+    transform: translateX(-50%);
+    background: var(--navy);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+    z-index: 999;
+  }
+  .toast.show { opacity: 1; }
+
+  .footer-tip {
+    text-align: center;
+    color: var(--mute);
+    font-size: 12px;
+    margin-top: 24px;
+    line-height: 1.8;
+  }
+  .footer-tip code {
+    background: var(--bg);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: Consolas, Monaco, monospace;
+    color: var(--red);
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ===== 标题 ===== -->
+  <div class="header">
+    <span class="badge">财务部 · 培训考试</span>
+    <h1>增值税专用发票全员管理培训 · 在线测试</h1>
+    <div class="subtitle">10 道题  ·  满分 100 分  ·  80 分及以上为通过  ·  建议用时 10 分钟</div>
+  </div>
+
+  <!-- ===== 信息表单 ===== -->
+  <div class="card first">
+    <div class="section-title">考生信息</div>
+    <div class="info-grid">
+      <div class="field">
+        <label>姓名<span class="required">*</span></label>
+        <input type="text" id="f_name" placeholder="请输入您的姓名" maxlength="20">
+      </div>
+      <div class="field">
+        <label>部门<span class="required">*</span></label>
+        <input type="text" id="f_dept" placeholder="请输入您所在部门" maxlength="30">
+      </div>
+      <div class="field">
+        <label>工号</label>
+        <input type="text" id="f_empid" placeholder="选填" maxlength="20">
+      </div>
+      <div class="field">
+        <label>测试日期</label>
+        <input type="date" id="f_date">
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 题目区 ===== -->
+  <div class="card">
+    <div class="section-title">答题区  ·  共 10 题</div>
+    <div id="quiz"></div>
+  </div>
+
+  <!-- ===== 提交按钮 ===== -->
+  <div class="card last">
+    <div class="submit-area">
+      <button class="btn btn-primary" id="submitBtn">提交并查看成绩</button>
+    </div>
+  </div>
+
+  <!-- ===== 结果区 ===== -->
+  <div class="result" id="resultArea">
+    <div class="result-score" id="scoreBox">
+      <span class="attempt-info" id="attemptInfo"></span>
+      <div class="verdict" id="verdictTxt"></div>
+      <div><span class="score-num" id="scoreNum">0</span><span class="score-unit"> / 100 分</span></div>
+      <div class="desc" id="scoreDesc"></div>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat"><div class="label">答对</div><div class="val" id="rightCnt" style="color: var(--green);">0</div></div>
+      <div class="stat"><div class="label">答错</div><div class="val" id="wrongCnt" style="color: var(--red);">0</div></div>
+      <div class="stat"><div class="label">总题数</div><div class="val">10</div></div>
+    </div>
+
+    <div class="section-title" style="font-size: 14px;">逐题对照  ·  答错题目下方附原因解析</div>
+    <div class="detail-list" id="detailList"></div>
+
+    <!-- 重新答题区 -->
+    <div class="retake-area">
+      <button class="btn btn-retake" onclick="retakeQuiz()">
+        <span style="font-size: 16px;">📝</span>
+        <span>重新答题</span>
+      </button>
+      <span class="retake-hint">复习一下解析，再来一遍试试？答案会被清空，您的姓名/部门保留。</span>
+    </div>
+
+    <div class="send-area">
+      <div class="section-title" style="font-size: 14px;">提交成绩给财务部</div>
+      <p style="font-size: 13px; color: var(--mute); margin-top: 8px;">请通过下列任一方式将成绩报告发送给财务部存档：</p>
+      <div class="send-grid">
+        <button class="send-btn" onclick="sendEmail()">
+          <span class="ico">📧</span>
+          <span class="label">邮件发送</span>
+          <span class="hint">打开邮箱并自动填写</span>
+        </button>
+        <button class="send-btn" onclick="copyResult()">
+          <span class="ico">📋</span>
+          <span class="label">复制成绩</span>
+          <span class="hint">粘贴到微信/钉钉</span>
+        </button>
+        <button class="send-btn" onclick="downloadResult()">
+          <span class="ico">💾</span>
+          <span class="label">下载报告</span>
+          <span class="hint">保存为 txt 文件</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-tip">
+    本系统在本地浏览器中运行，不会上传任何数据。<br>
+    财务部默认邮箱占位符 <code>finance@company.com</code> 可在 HTML 文件源代码中搜索修改。
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ===================== 配置 ===================== */
+const FINANCE_EMAIL = "finance@company.com";   // ← 部署时改成贵公司真实财务邮箱
+const PASS_SCORE    = 80;
+const POINTS_PER_Q  = 10;
+
+/* ===================== 题库（简化版：7 单选 + 3 判断，无计算、无多选） ===================== */
+const QUESTIONS = [
+  { num:1, type:"single", tag:"单选题",
+    q:"为什么公司要求人人都重视索取增值税专用发票？",
+    opts:[
+      ["A","只是走个流程，没什么实际用处"],
+      ["B","每张专票都能帮公司抵扣进项税、少缴税，相当于为公司省钱"],
+      ["C","这是财务一个人的事，与普通员工无关"],
+    ],
+    ans:["B"],
+    expl:"增值税专用发票能帮公司抵扣进项税、少缴税款。员工每索取一张合规专票，就是为公司省一笔税、创造一份利润——所以人人都是「节税专员」。" },
+
+  { num:2, type:"single", tag:"单选题",
+    q:"员工出差住宿，应向酒店索取哪种发票才能帮公司抵扣？",
+    opts:[
+      ["A","增值税普通发票"],
+      ["B","增值税专用发票"],
+    ],
+    ans:["B"],
+    expl:"只有增值税专用发票才能抵扣进项税，普通发票不能抵。入住时记得跟前台明确说「开专票」。" },
+
+  { num:3, type:"single", tag:"单选题",
+    q:"员工坐飞机出差，下列哪种凭证才能帮公司抵扣？",
+    opts:[
+      ["A","增值税普通发票"],
+      ["B","电子行程单（航空公司开具的发票）"],
+      ["C","登机牌"],
+    ],
+    ans:["B"],
+    expl:"机票必须凭航空公司开具的「电子行程单」才能抵扣税款；普通发票、登机牌都不能抵。自 2025/10/1 起国内航班停发纸质行程单，统一用电子行程单（PDF 发票）。" },
+
+  { num:4, type:"single", tag:"单选题",
+    q:"员工坐高铁 / 火车出差，怎样才能帮公司抵扣？",
+    opts:[
+      ["A","用纸质车票直接报销"],
+      ["B","在 12306 或购票平台申请公司抬头的电子发票"],
+      ["C","火车票不能抵扣"],
+    ],
+    ans:["B"],
+    expl:"自 2026/1/1 起（财税公告 2026 年第 13 号），光有实名制火车票本身不能抵扣，必须在 12306 申请「电子发票（铁路电子客票）」——它带有旅客身份信息和增值税税额，凭这张电子发票才能按 9% 抵扣，抬头填公司。纸质车票不是有效抵扣凭证。" },
+
+  { num:5, type:"single", tag:"单选题",
+    q:"下列哪项支出可以抵扣进项税？",
+    opts:[
+      ["A","中秋节发给员工的月饼"],
+      ["B","员工出差的住宿费"],
+      ["C","部门团建唱 KTV 的费用"],
+    ],
+    ans:["B"],
+    expl:"住宿费可正常抵扣；员工福利（月饼）和娱乐（KTV）即使取得专票也不能抵。" },
+
+  { num:6, type:"single", tag:"单选题",
+    q:"员工出差发票应在多长时间内交财务，以免影响公司抵扣入账？",
+    opts:[
+      ["A","当年内交齐，不要跨年"],
+      ["B","三年内都行"],
+      ["C","没有时限，随时交"],
+    ],
+    ans:["A"],
+    expl:"增值税专用发票自 2020 年 3 月起已取消认证抵扣期限，没有「多少天作废」的规定；但企业所得税要求费用在发生当年税前扣除，发票一旦跨年就可能无法入账抵扣。务必当年内（尤其年底前）交财务，建议出差回来 15 天内交齐。" },
+
+  { num:7, type:"single", tag:"单选题",
+    q:"下列哪项费用，即使取得专用发票也不能抵扣？",
+    opts:[
+      ["A","住宿费"],
+      ["B","高铁票"],
+      ["C","餐饮费"],
+    ],
+    ans:["C"],
+    expl:"餐饮服务属于不得抵扣项目，即使开了专票也不能抵进项税；而且招待 / 宴请的餐饮还属于「业务招待费」，企业所得税只能按 60% 扣除、另 40% 要纳税调增补税，双重不划算。住宿、机票、高铁等可正常抵扣。" },
+
+  { num:8, type:"single", tag:"单选题",
+    q:"有同事说「1% 的发票税率太低，不用索要专票」，正确的做法是？",
+    opts:[
+      ["A","对，1% 太低不用要"],
+      ["B","要一张普通发票就行"],
+      ["C","仍应索取增值税专用发票，可按 1% 抵扣"],
+    ],
+    ans:["C"],
+    expl:"1% 也是钱，积少成多。只要是增值税专用发票形式，公司就能按 1% 抵扣进项税，所以仍要索取专票，不能只要普票。" },
+
+  { num:9, type:"single", tag:"单选题",
+    q:"机票的电子行程单，可以按多少税率抵扣进项税？",
+    opts:[
+      ["A","3%"],
+      ["B","6%"],
+      ["C","9%"],
+      ["D","13%"],
+    ],
+    ans:["C"],
+    expl:"航空旅客运输按 9% 税率抵扣进项税。（铁路客运也是 9%，公路/水路客运 3%，住宿 6%。）" },
+
+  { num:10, type:"single", tag:"单选题",
+    q:"员工在网上为公司采购办公用品 / 固定资产，下列做法正确的是？",
+    opts:[
+      ["A","用国补（国家补贴）下单更便宜，发票照样能给公司报销"],
+      ["B","下单前确认能开公司抬头的专票；用了国补只能开个人抬头、不能报销"],
+      ["C","网购默认开的普通发票就够报销抵扣了"],
+    ],
+    ans:["B"],
+    expl:"用了国补（国家补贴）的商品只能开个人抬头发票，无法开公司抬头 / 专票，不能用于公司报销抵扣（减掉国补金额也不行）。网购默认开普票、不能抵进项，要主动向店铺索取公司抬头的增值税专用发票。" },
+];
+
+/* ===================== 渲染题目 ===================== */
+const quizDiv = document.getElementById("quiz");
+
+QUESTIONS.forEach((q) => {
+  const qDiv = document.createElement("div");
+  qDiv.className = "question";
+  qDiv.dataset.qnum = q.num;
+  qDiv.dataset.qtype = q.type;
+
+  const headerHTML = `
+    <div class="q-header">
+      <div class="q-num">${q.num}</div>
+      <div class="q-text">${q.q}<span class="q-type">${q.tag}</span></div>
+    </div>`;
+  let optsHTML = `<div class="options">`;
+  q.opts.forEach(([letter, text]) => {
+    const inputType = q.type === "multi" ? "checkbox" : "radio";
+    optsHTML += `
+      <label class="option">
+        <input type="${inputType}" name="q${q.num}" value="${letter}">
+        <span class="option-letter">${letter}.</span>
+        <span class="option-text">${text}</span>
+      </label>`;
+  });
+  optsHTML += `</div>`;
+  qDiv.innerHTML = headerHTML + optsHTML;
+  quizDiv.appendChild(qDiv);
+});
+
+// 选中视觉反馈
+document.querySelectorAll(".option").forEach(opt => {
+  const input = opt.querySelector("input");
+  input.addEventListener("change", () => {
+    if (input.type === "radio") {
+      // 同组其他取消高亮
+      const name = input.name;
+      document.querySelectorAll(`input[name="${name}"]`).forEach(i => {
+        i.closest(".option").classList.remove("selected");
+      });
+    }
+    opt.classList.toggle("selected", input.checked);
+  });
+});
+
+// 默认日期为今天
+document.getElementById("f_date").valueAsDate = new Date();
+
+/* ===================== 提交评分 ===================== */
+const submitBtn = document.getElementById("submitBtn");
+let lastResult = null;
+let attemptCount = 0;
+
+submitBtn.addEventListener("click", () => {
+  const name = document.getElementById("f_name").value.trim();
+  const dept = document.getElementById("f_dept").value.trim();
+
+  // 必填校验
+  let valid = true;
+  if (!name) { document.getElementById("f_name").classList.add("error"); valid = false; }
+  else document.getElementById("f_name").classList.remove("error");
+  if (!dept) { document.getElementById("f_dept").classList.add("error"); valid = false; }
+  else document.getElementById("f_dept").classList.remove("error");
+
+  if (!valid) {
+    toast("请填写姓名和部门");
+    document.getElementById("f_name").scrollIntoView({behavior: "smooth", block: "center"});
+    return;
+  }
+
+  // 评分
+  let right = 0, wrong = 0;
+  const details = [];
+
+  QUESTIONS.forEach(q => {
+    const inputs = document.querySelectorAll(`input[name="q${q.num}"]:checked`);
+    const userAns = Array.from(inputs).map(i => i.value).sort();
+    const correctAns = [...q.ans].sort();
+    const isCorrect = userAns.length === correctAns.length &&
+                     userAns.every((v,i) => v === correctAns[i]);
+    if (isCorrect) right++;
+    else wrong++;
+    details.push({
+      num: q.num,
+      qtext: q.q,
+      isCorrect,
+      userAns: userAns.length ? userAns.join("、") : "(未作答)",
+      correctAns: correctAns.join("、"),
+      expl: q.expl || "",
+    });
+  });
+
+  const score = right * POINTS_PER_Q;
+  const pass  = score >= PASS_SCORE;
+  attemptCount++;
+  lastResult = {
+    name, dept,
+    empid: document.getElementById("f_empid").value.trim(),
+    date: document.getElementById("f_date").value || new Date().toISOString().slice(0,10),
+    attempt: attemptCount,
+    score, right, wrong, pass, details,
+  };
+
+  showResult(lastResult);
+});
+
+function showResult(r) {
+  const resArea = document.getElementById("resultArea");
+  const scoreBox = document.getElementById("scoreBox");
+  scoreBox.className = "result-score " + (r.pass ? "pass" : "fail");
+  document.getElementById("verdictTxt").textContent = r.pass ? "通  过  ✓" : "未  通  过  ✗";
+  document.getElementById("scoreNum").textContent = r.score;
+  document.getElementById("scoreDesc").textContent =
+    r.pass ? `恭喜 ${r.name}！您已掌握本次培训核心要点，请将成绩发送至财务部备案。`
+            : `${r.name} 同志，距离 ${PASS_SCORE} 分及格线还差 ${PASS_SCORE - r.score} 分，建议复习 PPT 后重测。`;
+  document.getElementById("rightCnt").textContent = r.right;
+  document.getElementById("wrongCnt").textContent = r.wrong;
+
+  const dl = document.getElementById("detailList");
+  dl.innerHTML = "";
+  r.details.forEach(d => {
+    const wrap = document.createElement("div");
+    wrap.className = "detail-wrap";
+
+    const item = document.createElement("div");
+    item.className = "detail-item " + (d.isCorrect ? "correct" : "wrong");
+    item.innerHTML = `
+      <span class="ico">${d.isCorrect ? "✓" : "✗"}</span>
+      <span class="qno">第 ${d.num} 题</span>
+      <span>${d.isCorrect ? "答对" : "答错"}</span>
+      <span class="ans">您的答案：${d.userAns}  /  正确答案：${d.correctAns}</span>
+    `;
+    wrap.appendChild(item);
+
+    // 答错的题，下方展开"原因 / 正解解析"
+    if (!d.isCorrect && d.expl) {
+      const explBox = document.createElement("div");
+      explBox.className = "expl-box";
+      explBox.innerHTML = `
+        <div class="expl-title">📘 原因解析 · 第 ${d.num} 题</div>
+        <div class="expl-q">${d.qtext}</div>
+        <div class="expl-body">${d.expl.replace(/\n/g, "<br>")}</div>
+        <div class="expl-foot">正确答案：<strong>${d.correctAns}</strong>　·　您的答案：<span style="color:var(--red);">${d.userAns}</span></div>
+      `;
+      wrap.appendChild(explBox);
+    }
+
+    dl.appendChild(wrap);
+  });
+
+  // 显示尝试次数
+  const attemptInfo = document.getElementById("attemptInfo");
+  if (r.attempt > 1) {
+    attemptInfo.style.display = "inline-block";
+    attemptInfo.textContent = `第 ${r.attempt} 次答题`;
+  } else {
+    attemptInfo.style.display = "none";
+  }
+
+  resArea.classList.add("show");
+  resArea.scrollIntoView({behavior: "smooth", block: "start"});
+}
+
+/* ===================== 重新答题 ===================== */
+function retakeQuiz() {
+  if (!confirm("确定要重新答题吗？\n当前答案将被清除（成绩报告已生成，可继续发送给财务）。")) return;
+
+  // 清空所有选项
+  document.querySelectorAll("#quiz input[type=radio], #quiz input[type=checkbox]").forEach(i => {
+    i.checked = false;
+    i.closest(".option").classList.remove("selected");
+  });
+
+  // 隐藏结果区
+  document.getElementById("resultArea").classList.remove("show");
+
+  // 滚动到信息表单（题目）
+  document.querySelector("#quiz").scrollIntoView({behavior: "smooth", block: "start"});
+
+  toast("已清空答案，请重新作答");
+}
+
+/* ===================== 生成结果文本（精简版 · 仅供财务存档） ===================== */
+function buildResultText(r) {
+  const wrongNums = r.details.filter(d => !d.isCorrect).map(d => d.num);
+  const wrongStr  = wrongNums.length ? "第 " + wrongNums.join("、") + " 题" : "无";
+
+  const lines = [];
+  lines.push("【增值税专用发票培训 · 考试成绩】");
+  lines.push("");
+  lines.push("姓        名：" + r.name);
+  lines.push("所属部门：" + r.dept);
+  if (r.empid) lines.push("工        号：" + r.empid);
+  lines.push("测试日期：" + r.date);
+  if (r.attempt > 1) lines.push("答题次数：第 " + r.attempt + " 次");
+  lines.push("────────────────");
+  lines.push("成        绩：" + r.score + " 分 / 100 分");
+  lines.push("评        定：" + (r.pass ? "✓ 通过（≥80 分）" : "✗ 未通过（<80 分）"));
+  lines.push("错题题号：" + wrongStr);
+  lines.push("");
+  lines.push("（用于财务部存档及知识点掌握度统计）");
+  return lines.join("\n");
+}
+
+/* ===================== 发送方式 ===================== */
+function sendEmail() {
+  if (!lastResult) return;
+  const r = lastResult;
+  const subject = `培训考试成绩 - ${r.name}（${r.dept}）- ${r.score}分 - ${r.pass ? "通过" : "未通过"}`;
+  const body = buildResultText(r);
+  const url = `mailto:${FINANCE_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  window.location.href = url;
+  toast("已打开邮件客户端，请确认后点发送");
+}
+
+function copyResult() {
+  if (!lastResult) return;
+  const text = buildResultText(lastResult);
+  navigator.clipboard.writeText(text).then(
+    () => toast("✓ 已复制到剪贴板，可粘贴到微信/钉钉/邮件"),
+    () => {
+      // fallback
+      const ta = document.createElement("textarea");
+      ta.value = text; document.body.appendChild(ta);
+      ta.select(); document.execCommand("copy");
+      document.body.removeChild(ta);
+      toast("✓ 已复制到剪贴板");
+    }
+  );
+}
+
+function downloadResult() {
+  if (!lastResult) return;
+  const r = lastResult;
+  const text = buildResultText(r);
+  const blob = new Blob([text], {type: "text/plain;charset=utf-8"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = `培训考试成绩_${r.name}_${r.dept}_${r.date}.txt`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(a.href);
+  toast("✓ 成绩报告已下载");
+}
+
+/* ===================== 小提示 toast ===================== */
+let toastTimer;
+function toast(msg) {
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove("show"), 2400);
+}
+</script>
+</body>
+</html>
